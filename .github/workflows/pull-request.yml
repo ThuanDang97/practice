@@ -15,17 +15,14 @@ jobs:
         with:
           node-version: "16.x"
 
-      - name: Redirect folder
-        run: cd my-react-app
-
       - name: Run Yarn
         run: yarn
 
       - name: Install packages
-        run: yarn install
+        run: cd my-react-app && yarn install
 
       - name: Run project
-        run: yarn run dev
+        run: cd my-react-app && yarn run dev
 
     #   - name: Run tests
     #     run: pnpm run test
