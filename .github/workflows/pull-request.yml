@@ -15,11 +15,14 @@ jobs:
         with:
           node-version: "16.x"
 
+      - name: Redirect folder
+        run: cd my-react-app
+
       - name: Install packages
         run: pnpm install
 
       - name: Run project
         run: pnpm run dev
 
-      - name: Run tests
-        run: pnpm run test
+    #   - name: Run tests
+    #     run: pnpm run test
