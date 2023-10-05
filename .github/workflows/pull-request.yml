@@ -15,6 +15,9 @@ jobs:
         with:
           node-version: "16.x"
 
+      - name: Set up pnpm
+        run: npm install pnpm
+
       - name: Redirect folder
         run: cd my-react-app
 
