@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Authentication from "./Authentication";
 
 const AnimeList: React.FC = () => {
   const [animeList, setAnimeList] = useState<any[]>([]);
 
-  var query = `
+  const query = `
 query {
     Page (page: 1, perPage: 10) {
         media (type: ANIME) {
@@ -49,32 +50,12 @@ query {
 }
 `;
 
-  var query1 = `
-query {
-    Page(page: 1, perPage: 10) {
-        media(type: ANIME, sort: POPULARITY_DESC) {
-          id
-          title {
-            romaji
-            english
-            native
-          }
-          popularity
-          startDate {
-            year
-            month
-            day
-          }
-        }
-      }
-}
-`;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post("https://graphql.anilist.co", {
-          query: query1,
+          query: query,
         });
 
         setAnimeList(response.data.data.Page.media);
@@ -96,6 +77,7 @@ query {
           </li>
         ))}
       </ul>
+      <Authentication />
     </div>
   );
 };
